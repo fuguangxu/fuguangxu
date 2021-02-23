@@ -1,90 +1,101 @@
-# class Cup:
-#     __high=0
-#     __v=0
-#     __color=""
-#     __tom=""
-#     def setHigh(self,high):
-#         self.__high=high
-#     def getHigh(self):
-#         return self.__high
+#厨师
+# class Cooker:
+#     __name=None
+#     __age=None
+#     def setName(self,name):
+#         self.__name=name
+#     def getName(self):
+#         return self.__name
 #
-#     def setV(self,v):
-#         self.__v=v
-#     def getV(self):
-#         return self.__v
+#     def setAge(self,age):
+#         self.__age=age
+#     def getAge(self):
+#         return self.__age
 #
-#     def setColor(self,color):
-#         self.__color=color
-#     def getColor(self):
-#         return self.__color
+#     def cook1(self):#定义的蒸饭的方法
+#         pass#无返回值
 #
-#     def setTom(self,tom):
-#         self.__tom=tom
-#     def getTom(self):
-#         return self.__tom
+# class Cook2(Cooker):#定义cooker的子类
+#     def chaocai(self):
+#         pass
 #
-#     def save(self,much):
-#         if much>self.__v:
-#             print("水冒了！")
-#         else:
-#             print('这杯水可存放',much,"毫升水")
-# p=Cup()
-# p.setHigh(5)
-# p.setV(1000)
-# p.setColor("蓝色")
-# p.setTom("玻璃")
-# print("这个杯子的材质是",p.getTom(),"容积为",p.getV(),"ml","颜色为",p.getColor(),"高度为",p.getHigh(),"cm")
-# p.save(1200)
+# class Cooker2_2(Cook2):#定义子类的子类（孙子类）
+#     def chaocai(self):#重写父类的所有方法 chaocai和zhu
+#         super().chaocai()
+#         print(self.getName(),"正在炒菜")
+#
+#     def zhu(self):#煮调用的cook1里的无返回值的那个pass
+#         super().cook1()#super就是父类，拥有父类里的所有东西
+#         print(self.getName(),"正在煮饭")
+#
+# c=Cooker2_2()
+# c.setName("小付")
+# c.setAge("24")
+# print(c.getName(),c.getAge())
+# c.chaocai()#调用孙子类里面的2——2
+# c.zhu()
 
-class Computer:
-    __size=""
-    __price=0
-    __cpu=0
-    __meory=0
-    __open=""
-    def setSize(self,size):
-        self.__size=size
-    def getSize(self):
-        return self.__size
+#i.	人：年龄，性别，姓名。
+#ii.	现在有个工种，工人：年龄，性别，姓名 。行为：干活。请用继承的角度来实现该类。
+#iii.	现在有学生这个工种，学生：年龄，性别，姓名，学号。行为：学习，唱歌。请结合上面的几个题目用继承的角度来实现。
+class Person:
+    __age=None
+    __sex=None
+    __name=None
+    def setAge(self,age):
+        self.__age=age
+    def getAge(self):
+        return self.__age
 
-    def setPrice(self,price):
-        self.__price=price
-    def getPrice(self):
-        return self.__price
+    def setSex(self,sex):
+        self.__sex=sex
+    def getSex(self):
+        return self.__sex
 
-    def setCpu(self,cpu):
-        self.__cpu=cpu
-    def getCpu(self):
-        return self.__cpu
+    def setName(self,name):
+        self.__name=name
+    def getName(self):
+        return self.__name
 
-    def setOpen(self,open):
-        self.__open=open
-    def getOpen(self):
-        return self.__open
+class worker(Person):
+    def wor(self,name,age,sex):
+        super().setName(name)
+        super().setAge(age)
+        super().setSex(sex)
+    def gongzuo(self):
+        print(c.getName(),"正在工作")
 
-    def setMeory(self,meory):
-        self.__meory=meory
-    def getMeory(self):
-        return self.__meory
+class student(Person):
+    __num=None
+    def setNum(self,num):
+        self.__num=num
+    def getNum(self):
+        return self.__num
+    def wor(self,name,age,sex,num):
+        super().setName(name)
+        super().setAge(age)
+        super().setSex(sex)
+        self.__num = num
+    def study(self):
+        print(c.getName(),"正在学习")
+    def song(self):
+        print(c.getName(),"正在唱歌")
 
-    def dazi(self):
-        print("笔记本正在打字")
-    def playgames(self):
-        print("笔记本正在打游戏")
-    def seetv(self):
-        print("笔记本正在看视频")
-p=Computer()
-p.setPrice(5000)
-p.setCpu(8)
-p.setMeory(8)
-p.setSize(12)
-p.setOpen(2)
-print("这台电脑的价格是",p.getPrice(),"元","内存大小为",p.getMeory(),"G","cpu内存大小为",p.getCpu(),"尺寸为",
-      p.getSize(),"英寸","待机时长为",p.getOpen(),"小时")
 
-p.playgames()
-p.dazi()
-p.seetv()
+c=worker()
+c.wor("xxxx","d","ddd")
+print(c.getAge(),c.getSex(),c.getName())
+c.gongzuo()
+
+s=student()
+s.wor("xxxx","d","ddd","gggggg")
+print(s.getAge(),s.getSex(),s.getName(),s.getNum())
+s.song()
+s.study()
+
+
+
+
 
 
 
